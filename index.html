@@ -1,0 +1,292 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Pinnacle</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* GLOBAL */
+        body {
+        font-family: 'Montserrat', sans-serif;
+        background: #fff8f0;
+        color: #222;
+        margin: 0;
+        padding: 0;
+        }
+
+        /* HEADER */
+        header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 2rem;
+        background: #fff;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        border-radius: 0 0 12px 12px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        }
+
+        #header-img {
+        height: 60px;
+        width: auto;
+        border-radius: 8px;
+        object-fit: cover;
+        }
+
+        header h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 0;
+        color: #333;
+        }
+
+        nav ul {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        }
+
+        nav ul li a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+        transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+        color: #c0392b; /* deep red accent */
+        }
+
+
+        /* MAIN LAYOUT */
+        main,
+        .order-form,
+        footer {
+        max-width: 1000px;      /* or any width you like */
+        margin: 0 auto;         /* this centers horizontally */
+        padding: 1rem;          /* some breathing room */
+        text-align: center;     /* optional: center text inside */
+        }
+
+        main {
+        max-width: 1100px;
+        margin: 2rem auto;
+        padding: 1rem;
+        }
+
+        /* MENU CARDS */
+        .menu-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.5rem;
+        }
+
+        .menu-card {
+        border: 2px solid #e4002b;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #fff;
+        text-align: center;
+        transition: transform 0.2s;
+        }
+
+        .menu-card:hover {
+        transform: translateY(-4px);
+        }
+
+        .menu-card img {
+        width: 100%;
+        display: block;
+        }
+
+        .menu-card h3 {
+        margin: 0.5rem 0;
+        color: #e4002b;
+        font-weight: 700;
+        }
+
+        .menu-card p {
+        margin: 0 0 0.25rem;
+        padding: 0 0.75rem;
+        }
+
+        .menu-card .price {
+        display: block;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 1rem;
+        }
+
+        /* ORDER FORM */
+        .order-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        max-width: 400px;
+        margin-top: 1rem;
+        }
+
+        .order-form label {
+        font-weight: 600;
+        }
+
+        .order-form input[type="number"],
+        .order-form textarea {
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+        }
+
+        .order-form fieldset {
+        border: 2px solid #e4002b;
+        border-radius: 6px;
+        padding: 0.5rem 0.75rem;
+        }
+
+        .order-form legend {
+        font-weight: 600;
+        color: #e4002b;
+        }
+
+        .order-form input[type="submit"] {
+        background: #e4002b;
+        color: #fff;
+        padding: 0.75rem;
+        border: none;
+        border-radius: 6px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.3s;
+        }
+
+        .order-form input[type="submit"]:hover {
+        background: #b60022;
+        }
+
+        /* FOOTER */
+        footer {
+        max-width: 1100px;
+        margin: 2rem auto;
+        text-align: center;
+        color: #777;
+        padding: 1rem;
+        border-top: 2px solid #e4002b;
+        }
+
+        footer p {
+        margin: 0;
+        }
+  </style>
+</head>
+<body>
+  <header>
+    <img id="header-img" src="https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="A view of the elegant interior of The Pinnacle restaurant" width="500">
+    <h1>The Pinnacle</h1>
+    <nav>
+      <ul>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#order-menu">Order Menu</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="menu">
+      <h2>Menu</h2>
+      <div class="menu-container">
+
+        <article class="menu-card">
+            <img src="https://images.pexels.com/photos/674577/pexels-photo-674577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="A delicious plate of Jollof Rice with chicken and plantain">
+            <h3>Jollof Rice</h3>
+            <p>A classic West African dish featuring perfectly cooked rice in a rich, flavorful tomato and pepper sauce, seasoned with traditional spices.</p>
+            <em class="price">$18.99</em>
+        </article>
+
+
+        <article class="menu-card">
+          <img src="https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="A plate of grilled fish with vegetables">
+          <h3>Grilled Tilapia</h3>
+          <p>Whole tilapia fish, marinated in ginger, garlic, and herbs, then grilled to perfection. Served with a side of spicy pepper sauce.</p>
+          <em class="price">$22.50</em>
+        </article>
+
+        <article class="menu-card">
+          <img src="https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="A basket of crispy fried chicken">
+          <h3>Crispy Fried Chicken</h3>
+          <p>Juicy and tender chicken pieces coated in a seasoned batter and fried until golden brown and crispy. A timeless favorite.</p>
+          <em class="price">$15.75</em>
+        </article>
+
+        <article class="menu-card">
+          <img src="https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="A basket of crispy fried chicken">
+          <h3>Crispy Fried Chicken</h3>
+          <p>Juicy and tender chicken pieces coated in a seasoned batter and fried until golden brown and crispy. A timeless favorite.</p>
+          <em class="price">$15.75</em>
+        </article>
+
+        <article class="menu-card">
+          <img src="https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="A basket of crispy fried chicken">
+          <h3>Crispy Fried Chicken</h3>
+          <p>Juicy and tender chicken pieces coated in a seasoned batter and fried until golden brown and crispy. A timeless favorite.</p>
+          <em class="price">$15.75</em>
+        </article>
+
+        <article class="menu-card">
+          <img src="https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="A basket of crispy fried chicken">
+          <h3>Crispy Fried Chicken</h3>
+          <p>Juicy and tender chicken pieces coated in a seasoned batter and fried until golden brown and crispy. A timeless favorite.</p>
+          <em class="price">$15.75</em>
+        </article>
+
+
+      </div>
+    </section>
+
+    <section id="order-menu">
+        <h2>Place Your Order</h2>
+    <form class="order-form" action="thankyou.html" method="get">
+
+
+        <!-- Jollof Rice -->
+        <label for="jollof-qty">Jollof Rice (portions):</label>
+        <input type="number" id="jollof-qty" name="jollof_qty" min="0" value="0">
+
+        <label for="jollof-requests">Special Requests for Jollof Rice:</label>
+        <textarea id="jollof-requests" name="jollof_requests" rows="3" placeholder="e.g., extra spicy, no onions"></textarea>
+
+        <!-- Grilled Tilapia -->
+        <label for="tilapia-qty">Grilled Tilapia (portions):</label>
+        <input type="number" id="tilapia-qty" name="tilapia_qty" min="0" value="0">
+
+        <!-- Fried Chicken -->
+        <label for="chicken-qty">Crispy Fried Chicken (portions):</label>
+        <input type="number" id="chicken-qty" name="chicken_qty" min="0" value="0">
+
+        <!-- Add-ons -->
+        <fieldset class="addons">
+        <legend>Add-ons:</legend>
+        <label><input type="checkbox" name="addon" value="plantain"> Fried Plantain</label>
+        <label><input type="checkbox" name="addon" value="goat-meat"> Side of Ogunfe (Goat Meat)</label>
+        <label><input type="checkbox" name="addon" value="ponmo"> Side of Cow Skin (Ponmo)</label>
+        </fieldset>
+
+        <input type="submit" value="Go To Checkout">
+    </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <marquee behavior="scroll" direction="left"><p>Made with love by Mansheu ❤️ Made with love by Mansheu ❤️ Made with love by Mansheu ❤️ Made with love by Mansheu ❤️ Made with love by Mansheu ❤️ Made with love by Mansheu ❤️</p></marquee>
+
+  </footer>
+</body>
+</html>

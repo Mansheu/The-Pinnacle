@@ -103,7 +103,9 @@
 
         .menu-card img {
         width: 100%;
+        height: 200px; /* Set a fixed height for all images */
         display: block;
+        object-fit: cover; /* Ensures image covers the area without distortion */
         }
 
         .menu-card h3 {
@@ -204,15 +206,14 @@
       <div class="menu-container">
 
         <article class="menu-card">
-            <img src="https://images.pexels.com/photos/674577/pexels-photo-674577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="A delicious plate of Jollof Rice with chicken and plantain">
+            <img src="https://eleanorsdish.com/wp-content/uploads/Nigerian-party-jollof-rice-recipe-best.jpg" alt="A delicious plate of Jollof Rice with chicken and plantain">
             <h3>Jollof Rice</h3>
             <p>A classic West African dish featuring perfectly cooked rice in a rich, flavorful tomato and pepper sauce, seasoned with traditional spices.</p>
             <em class="price">$18.99</em>
         </article>
 
-
         <article class="menu-card">
-          <img src="https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="A plate of grilled fish with vegetables">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg9q-uWXEKyek9Kd4buxXNNK2t8xfk8v89jdJ4XiKxoFAlsqqh8F61y4YGI6La91Y4YhgkB3Xn-p4FIaVasrMPehLCiTCsEyu6GZKSTIDxdlXmjQYteYzWlqzAYfjsbn5K0Z0PrCelvbjI/s1600/1604398361122732-0.png" alt="A plate of grilled fish with vegetables">
           <h3>Grilled Tilapia</h3>
           <p>Whole tilapia fish, marinated in ginger, garlic, and herbs, then grilled to perfection. Served with a side of spicy pepper sauce.</p>
           <em class="price">$22.50</em>
@@ -226,34 +227,31 @@
         </article>
 
         <article class="menu-card">
-          <img src="https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="A basket of crispy fried chicken">
-          <h3>Crispy Fried Chicken</h3>
-          <p>Juicy and tender chicken pieces coated in a seasoned batter and fried until golden brown and crispy. A timeless favorite.</p>
-          <em class="price">$15.75</em>
+          <img src="https://sisijemimah.com/wp-content/uploads/2017/02/Nigerian-suya-recipe.jpg" alt="Spicy Suya Skewers with onions and peppers">
+          <h3>Suya</h3>
+          <p>Tender, thinly sliced beef, coated in a spicy peanut-based blend (Yaji) and grilled to smoky perfection. A Nigerian street food classic.</p>
+          <em class="price">$12.99</em>
         </article>
 
         <article class="menu-card">
-          <img src="https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="A basket of crispy fried chicken">
-          <h3>Crispy Fried Chicken</h3>
-          <p>Juicy and tender chicken pieces coated in a seasoned batter and fried until golden brown and crispy. A timeless favorite.</p>
-          <em class="price">$15.75</em>
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhOUY1pmdRdvXZB0sHy4eBExnvPCbVFzHDwybN9fAOMhXyHUfeeT-R1ng9rQnwu3dwtSHjob5EtFDHQGlT9IGw519ugqVf5iQAJDCaqDlb8pL9kBnYllU9gq00dGOl3BQoQ75r7cfH7Wg8/s1600/1579770182566517-0.png" alt="A bowl of rich Egusi Soup with fufu">
+          <h3>Egusi Soup and Fufu</h3>
+          <p>A rich and savory soup made from ground melon seeds, spinach, and assorted meats. A true Nigerian delicacy.</p>
+          <em class="price">$20.50</em>
         </article>
 
         <article class="menu-card">
-          <img src="https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="A basket of crispy fried chicken">
-          <h3>Crispy Fried Chicken</h3>
-          <p>Juicy and tender chicken pieces coated in a seasoned batter and fried until golden brown and crispy. A timeless favorite.</p>
-          <em class="price">$15.75</em>
+          <img src="https://sisijemimah.com/wp-content/uploads/2015/07/ogbono-2.jpg" alt="A hearty bowl of Ogbono Soup">
+          <h3>Ogbono Soup</h3>
+          <p>A rich, savory soup made with ground ogbono seeds, known for its distinctive drawy texture. Served with your choice of swallow.</p>
+          <em class="price">$21.00</em>
         </article>
-
-
       </div>
     </section>
 
     <section id="order-menu">
         <h2>Place Your Order</h2>
     <form class="order-form" action="thankyou.html" method="get">
-
 
         <!-- Jollof Rice -->
         <label for="jollof-qty">Jollof Rice (portions):</label>
@@ -270,6 +268,18 @@
         <label for="chicken-qty">Crispy Fried Chicken (portions):</label>
         <input type="number" id="chicken-qty" name="chicken_qty" min="0" value="0">
 
+        <!-- Suya -->
+        <label for="suya-qty">Suya (portions):</label>
+        <input type="number" id="suya-qty" name="suya_qty" min="0" value="0">
+
+        <!-- Egusi Soup and Fufu -->
+        <label for="egusi-qty">Egusi Soup and Fufu (portions):</label>
+        <input type="number" id="egusi-qty" name="egusi_qty" min="0" value="0">
+
+        <!-- Ogbono Soup -->
+        <label for="ogbono-qty">Ogbono Soup (portions):</label>
+        <input type="number" id="ogbono-qty" name="ogbono_qty" min="0" value="0">
+
         <!-- Add-ons -->
         <fieldset class="addons">
         <legend>Add-ons:</legend>
@@ -281,12 +291,10 @@
         <input type="submit" value="Go To Checkout">
     </form>
     </section>
-
   </main>
 
   <footer>
     <marquee behavior="scroll" direction="left"><p>Made with love by Mansheu ❤️ Made with love by Mansheu ❤️ Made with love by Mansheu ❤️ Made with love by Mansheu ❤️ Made with love by Mansheu ❤️ Made with love by Mansheu ❤️</p></marquee>
-
   </footer>
 </body>
 </html>

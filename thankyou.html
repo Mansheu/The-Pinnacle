@@ -1,40 +1,40 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Order Confirmation</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  /* center the entire page */
+  /* GLOBAL LAYOUT */
   body {
     font-family: 'Montserrat', sans-serif;
     background: #fff8f0;
     color: #222;
     display: flex;
-    flex-direction: column;   /* stack heading & pot */
-    align-items: center;      /* horizontal center */
-    justify-content: center;  /* vertical center */
-    min-height: 100vh;        /* fill viewport */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
     margin: 0;
+    padding: 1rem;
     text-align: center;
   }
 
   h1 {
     color: #e4002b;
     font-size: 2.2rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
   }
   p {
     font-size: 1.2rem;
-    margin-top: 0;
+    margin: 0 0 1.5rem;
   }
 
+  /* CTA BUTTON */
   .btn {
     display: inline-block;
-    margin-top: 1.5rem;
+    margin-top: 3rem;          
     padding: 0.75rem 1.5rem;
     background: #e4002b;
     color: #fff;
@@ -43,12 +43,9 @@
     border-radius: 6px;
     transition: background 0.3s;
   }
+  .btn:hover { background: #b60022; }
 
-  .btn:hover {
-    background: #b60022;
-  }
-
-  /* Chicken Pot */
+  /* POT + LID */
   .pot {
     position: relative;
     margin-top: 2rem;
@@ -77,7 +74,7 @@
     border-radius: 4px;
   }
 
-  /* Bubbles rising */
+  /* BUBBLES */
   .bubble {
     position: absolute;
     bottom: 10px;
@@ -98,13 +95,27 @@
     50%  { opacity: 1; }
     100% { transform: translateY(-80px) scale(0.6); opacity: 0; }
   }
+
+  /* RESPONSIVE TWEAKS */
+  @media (max-width: 768px) {
+    h1 { font-size: 1.9rem; }
+    p  { font-size: 1.05rem; }
+    .pot { width: 120px; height: 70px; }
+    .lid { width: 140px; left: -10px; }
+    .handle { left: 45px; }
+  }
+
+  @media (max-width: 480px) {
+    h1 { font-size: 1.6rem; }
+    p  { font-size: 0.95rem; }
+    .btn { padding: 0.65rem 1.2rem; font-size: 0.95rem; }
+  }
 </style>
 </head>
 <body>
   <h1>Thanks for your order!</h1>
   <p>Your order number is <strong>#1818</strong></p>
 
-  <!-- Cartoon pot -->
   <div class="pot">
     <div class="lid"></div>
     <div class="handle"></div>

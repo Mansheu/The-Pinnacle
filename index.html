@@ -1,257 +1,315 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>The Pinnacle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     /* GLOBAL */
-        body {
-        font-family: 'Montserrat', sans-serif;
-        background: #fff8f0;
-        color: #222;
-        margin: 0;
-        padding: 0;
-        }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #fff8f0;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px; /* Offset for sticky header */
+    }
+    img { max-width: 100%; height: auto; }
 
-        /* HEADER */
-        header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem 2rem;
-        background: #fff;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        border-radius: 0 0 12px 12px;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        }
+    /* HEADER */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      position: sticky; top: 0; z-index: 1000;
+    }
+    /* Hamburger Lines */
+    #header-img {
+      height: 60px;
+      width: 60px;
+    }
+    .header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 0;
+      color: #333;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    /* Navigation */
+    .nav {
+      display: flex;
+      gap: 1rem;
+    }
+    .nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    .nav a:hover { color: #e4002b; }
 
-        #header-img {
-        height: 60px;
-        width: auto;
-        border-radius: 8px;
-        object-fit: cover;
-        }
+    /* MAIN LAYOUT */
+    main, footer {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem;
+      text-align: center;
+    }
 
-        header h1 {
-        font-size: 1.8rem;
-        font-weight: 700;
-        margin: 0;
-        color: #333;
-        }
+    /* MENU CARDS */
+    .menu-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      width: 100%;
+    }
+    .menu-card {
+      border: 2px solid #e4002b;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .menu-card:hover { transform: translateY(-4px); }
+    .menu-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .menu-card h3 {
+      margin: 0.5rem 0;
+      color: #e4002b;
+      font-weight: 700;
+    }
+    .menu-card p {
+      margin: 0 0 0.25rem;
+      padding: 0 0.75rem;
+      font-size: 0.95rem;
+    }
+    .menu-card .price {
+      display: block;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 1rem;
+    }
 
-        nav ul {
-        display: flex;
-        gap: 1.5rem;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        }
+    /* ORDER FORM */
+    .order-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      max-width: 400px;
+      margin: 1rem auto 0;
+    }
+    .order-form label { font-weight: 600; text-align: left; }
+    .order-form input[type="number"],
+    .order-form textarea {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      width: 100%;
+    }
+    .order-form fieldset {
+      border: 2px solid #e4002b;
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+    }
+    .order-form legend {
+      font-weight: 600;
+      color: #e4002b;
+    }
+    .order-form input[type="submit"] {
+      background: #e4002b;
+      color: #fff;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .order-form input[type="submit"]:hover { background: #b60022; }
 
-        nav ul li a {
-        text-decoration: none;
-        color: #333;
-        font-weight: 600;
-        transition: color 0.3s;
-        }
+    /* FOOTER + marquee animation */
+    footer {
+      text-align: center;
+      color: #777;
+      padding: 1rem 0;
+      border-top: 2px solid #e4002b;
+      overflow: hidden;
+      position: relative;
+    }
+    footer .scroll-text {
+      display: inline-block;
+      white-space: nowrap;
+      animation: marquee 20s linear infinite;
+      font-size: 0.95rem;
+    }
+    @keyframes marquee {
+      0%   { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
 
-        nav ul li a:hover {
-        color: #c0392b; /* deep red accent */
-        }
+    /* --- RESPONSIVE STYLES --- */
 
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 28px;
+      height: 20px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 10; /* Ensure it's above other nav items */
+    }
+    .hamburger span {
+      display: block;
+      height: 3px;
+      background: #e4002b;
+      border-radius: 3px;
+      transition: all 0.3s ease-in-out;
+    }
 
-        /* MAIN LAYOUT */
-        main,
-        .order-form,
-        footer {
-        max-width: 1000px;      /* or any width you like */
-        margin: 0 auto;         /* this centers horizontally */
-        padding: 1rem;          /* some breathing room */
-        text-align: center;     /* optional: center text inside */
-        }
-
-        main {
-        max-width: 1100px;
-        margin: 2rem auto;
-        padding: 1rem;
-        }
-
-        /* MENU CARDS */
-        .menu-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 1.5rem;
-        }
-
-        .menu-card {
-        border: 2px solid #e4002b;
-        border-radius: 10px;
-        overflow: hidden;
-        background: #fff;
-        text-align: center;
-        transition: transform 0.2s;
-        }
-
-        .menu-card:hover {
-        transform: translateY(-4px);
-        }
-
-        .menu-card img {
-        width: 100%;
-        height: 200px; /* Set a fixed height for all images */
-        display: block;
-        object-fit: cover; /* Ensures image covers the area without distortion */
-        }
-
-        .menu-card h3 {
-        margin: 0.5rem 0;
-        color: #e4002b;
-        font-weight: 700;
-        }
-
-        .menu-card p {
-        margin: 0 0 0.25rem;
-        padding: 0 0.75rem;
-        }
-
-        .menu-card .price {
-        display: block;
-        font-weight: 700;
-        color: #000;
-        margin-bottom: 1rem;
-        }
-
-        /* ORDER FORM */
-        .order-form {
-        display: flex;
+    /* Tablet and Mobile Styles */
+    @media (max-width: 768px) {
+      /* Show hamburger and hide desktop nav links */
+      .hamburger { display: flex; }
+      .nav {
+        display: none;
         flex-direction: column;
-        gap: 1rem;
-        max-width: 400px;
-        margin-top: 1rem;
-        }
-
-        .order-form label {
-        font-weight: 600;
-        }
-
-        .order-form input[type="number"],
-        .order-form textarea {
-        padding: 0.5rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 1rem;
-        }
-
-        .order-form fieldset {
-        border: 2px solid #e4002b;
-        border-radius: 6px;
-        padding: 0.5rem 0.75rem;
-        }
-
-        .order-form legend {
-        font-weight: 600;
-        color: #e4002b;
-        }
-
-        .order-form input[type="submit"] {
-        background: #e4002b;
-        color: #fff;
-        padding: 0.75rem;
-        border: none;
-        border-radius: 6px;
-        font-weight: 700;
-        cursor: pointer;
-        transition: background 0.3s;
-        }
-
-        .order-form input[type="submit"]:hover {
-        background: #b60022;
-        }
-
-        /* FOOTER */
-        footer {
-        max-width: 1100px;
-        margin: 2rem auto;
-        text-align: center;
-        color: #777;
+        gap: 0.5rem;
+        background: #fff;
+        position: absolute;
+        top: 100%; /* Position below the header */
+        right: 1rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         padding: 1rem;
-        border-top: 2px solid #e4002b;
-        }
+        border-radius: 6px;
+      }
+      .nav.open { display: flex; }
 
-        footer p {
-        margin: 0;
-        }
+      /* Hamburger "X" animation */
+      .hamburger[aria-expanded="true"] span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger[aria-expanded="true"] span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* General layout adjustments */
+      #header-img { height: 48px; width: 48px; }
+      .header h1 { font-size: 1.4rem; }
+      .menu-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    /* Mobile-only Styles */
+    @media (max-width: 480px) {
+      body { font-size: 0.95rem; }
+      .header h1 { font-size: 1.2rem; }
+      .menu-card img { height: 150px; }
+      .menu-container {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      }
+    }
   </style>
 </head>
+
 <body>
-  <header>
-    <img id="header-img" src="https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="A view of the elegant interior of The Pinnacle restaurant" width="500">
+  <header class="header">
+    <!-- SVG Logo on the left -->
+    <svg id="header-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="60" height="60">
+      <!-- Bowl -->
+      <path d="M8 40c2 10 12 16 24 16s22-6 24-16H8z" fill="#e4002b"/>
+      <!-- Steam lines -->
+      <path d="M20 12c0 4 4 6 4 10" stroke="#e4002b" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M32 8c0 4 4 6 4 10"  stroke="#e4002b" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M44 12c0 4 4 6 4 10" stroke="#e4002b" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </svg>
     <h1>The Pinnacle</h1>
-    <nav>
-      <ul>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#order-menu">Order Menu</a></li>
-      </ul>
+
+    <!-- Hamburger Button -->
+    <button class="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="nav">
+      <!-- The `ul` and `li` were removed for simplicity, direct `a` tags work fine -->
+      <a href="#menu">Menu</a>
+      <a href="#order-menu">Order Menu</a>
     </nav>
   </header>
+
 
   <main>
     <section id="menu">
       <h2>Menu</h2>
       <div class="menu-container">
-
         <article class="menu-card">
-            <img src="https://eleanorsdish.com/wp-content/uploads/Nigerian-party-jollof-rice-recipe-best.jpg" alt="A delicious plate of Jollof Rice with chicken and plantain">
-            <h3>Jollof Rice</h3>
-            <p>A classic West African dish featuring perfectly cooked rice in a rich, flavorful tomato and pepper sauce, seasoned with traditional spices.</p>
-            <em class="price">$18.99</em>
+          <img src="https://eleanorsdish.com/wp-content/uploads/Nigerian-party-jollof-rice-recipe-best.jpg" alt="Jollof Rice">
+          <h3>Jollof Rice</h3>
+          <p>A classic West African dish featuring perfectly cooked rice in a rich, flavorful tomato and pepper sauce.</p>
+          <em class="price">$18.99</em>
         </article>
-
         <article class="menu-card">
-          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg9q-uWXEKyek9Kd4buxXNNK2t8xfk8v89jdJ4XiKxoFAlsqqh8F61y4YGI6La91Y4YhgkB3Xn-p4FIaVasrMPehLCiTCsEyu6GZKSTIDxdlXmjQYteYzWlqzAYfjsbn5K0Z0PrCelvbjI/s1600/1604398361122732-0.png" alt="A plate of grilled fish with vegetables">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg9q-uWXEKyek9Kd4buxXNNK2t8xfk8v89jdJ4XiKxoFAlsqqh8F61y4YGI6La91Y4YhgkB3Xn-p4FIaVasrMPehLCiTCsEyu6GZKSTIDxdlXmjQYteYzWlqzAYfjsbn5K0Z0PrCelvbjI/s1600/1604398361122732-0.png" alt="Grilled Tilapia">
           <h3>Grilled Tilapia</h3>
-          <p>Whole tilapia fish, marinated in ginger, garlic, and herbs, then grilled to perfection. Served with a side of spicy pepper sauce.</p>
+          <p>Whole tilapia fish, marinated in ginger, garlic, and herbs, then grilled to perfection.</p>
           <em class="price">$22.50</em>
         </article>
-
         <article class="menu-card">
-          <img src="https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="A basket of crispy fried chicken">
+          <img src="https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg" alt="Crispy Fried Chicken">
           <h3>Crispy Fried Chicken</h3>
-          <p>Juicy and tender chicken pieces coated in a seasoned batter and fried until golden brown and crispy. A timeless favorite.</p>
+          <p>Juicy and tender chicken pieces coated in a seasoned batter and fried until golden brown.</p>
           <em class="price">$15.75</em>
         </article>
-
         <article class="menu-card">
-          <img src="https://sisijemimah.com/wp-content/uploads/2017/02/Nigerian-suya-recipe.jpg" alt="Spicy Suya Skewers with onions and peppers">
+          <img src="https://sisijemimah.com/wp-content/uploads/2017/02/Nigerian-suya-recipe.jpg" alt="Suya">
           <h3>Suya</h3>
-          <p>Tender, thinly sliced beef, coated in a spicy peanut-based blend (Yaji) and grilled to smoky perfection. A Nigerian street food classic.</p>
+          <p>Tender, thinly sliced beef, coated in a spicy peanut-based blend (Yaji) and grilled to perfection.</p>
           <em class="price">$12.99</em>
         </article>
-
         <article class="menu-card">
-          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhOUY1pmdRdvXZB0sHy4eBExnvPCbVFzHDwybN9fAOMhXyHUfeeT-R1ng9rQnwu3dwtSHjob5EtFDHQGlT9IGw519ugqVf5iQAJDCaqDlb8pL9kBnYllU9gq00dGOl3BQoQ75r7cfH7Wg8/s1600/1579770182566517-0.png" alt="A bowl of rich Egusi Soup with fufu">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhOUY1pmdRdvXZB0sHy4eBExnvPCbVFzHDwybN9fAOMhXyHUfeeT-R1ng9rQnwu3dwtSHjob5EtFDHQGlT9IGw519ugqVf5iQAJDCaqDlb8pL9kBnYllU9gq00dGOl3BQoQ75r7cfH7Wg8/s1600/1579770182566517-0.png" alt="Egusi Soup">
           <h3>Egusi Soup and Fufu</h3>
-          <p>A rich and savory soup made from ground melon seeds, spinach, and assorted meats. A true Nigerian delicacy.</p>
+          <p>A rich and savory soup made from ground melon seeds, spinach, and assorted meats.</p>
           <em class="price">$20.50</em>
         </article>
-
         <article class="menu-card">
-          <img src="https://sisijemimah.com/wp-content/uploads/2015/07/ogbono-2.jpg" alt="A hearty bowl of Ogbono Soup">
+          <img src="https://sisijemimah.com/wp-content/uploads/2015/07/ogbono-2.jpg" alt="Ogbono Soup">
           <h3>Ogbono Soup</h3>
-          <p>A rich, savory soup made with ground ogbono seeds, known for its distinctive drawy texture. Served with your choice of swallow.</p>
+          <p>A rich, savory soup made with ground ogbono seeds, known for its distinctive drawy texture.</p>
           <em class="price">$21.00</em>
         </article>
       </div>
-    </section>
-
+    </section><br><br><hr><br>
     <section id="order-menu">
-        <h2>Place Your Order</h2>
-    <form class="order-form" action="thankyou.html" method="get">
+      <h2>Place Your Order</h2>
+      <form class="order-form" action="thankyou.html" method="GET">
 
         <!-- Jollof Rice -->
         <label for="jollof-qty">Jollof Rice (portions):</label>
@@ -264,7 +322,7 @@
         <label for="tilapia-qty">Grilled Tilapia (portions):</label>
         <input type="number" id="tilapia-qty" name="tilapia_qty" min="0" value="0">
 
-        <!-- Fried Chicken -->
+        <!-- Crispy Fried Chicken -->
         <label for="chicken-qty">Crispy Fried Chicken (portions):</label>
         <input type="number" id="chicken-qty" name="chicken_qty" min="0" value="0">
 
@@ -272,7 +330,7 @@
         <label for="suya-qty">Suya (portions):</label>
         <input type="number" id="suya-qty" name="suya_qty" min="0" value="0">
 
-        <!-- Egusi Soup and Fufu -->
+        <!-- Egusi Soup -->
         <label for="egusi-qty">Egusi Soup and Fufu (portions):</label>
         <input type="number" id="egusi-qty" name="egusi_qty" min="0" value="0">
 
@@ -282,19 +340,45 @@
 
         <!-- Add-ons -->
         <fieldset class="addons">
-        <legend>Add-ons:</legend>
-        <label><input type="checkbox" name="addon" value="plantain"> Fried Plantain</label>
-        <label><input type="checkbox" name="addon" value="goat-meat"> Side of Ogunfe (Goat Meat)</label>
-        <label><input type="checkbox" name="addon" value="ponmo"> Side of Cow Skin (Ponmo)</label>
+          <legend>Add-ons:</legend>
+          <label><input type="checkbox" name="addon" value="plantain"> Fried Plantain</label>
+          <label><input type="checkbox" name="addon" value="goat-meat"> Side of Ogunfe (Goat Meat)</label>
+          <label><input type="checkbox" name="addon" value="ponmo"> Side of Cow Skin (Ponmo)</label>
         </fieldset>
 
+        <!-- submit -->
         <input type="submit" value="Go To Checkout">
-    </form>
+      </form>
     </section>
+
   </main>
 
   <footer>
-    <marquee behavior="scroll" direction="left"><p>Made with love by Mansheu ❤️ Made with love by Mansheu ❤️ Made with love by Mansheu ❤️ Made with love by Mansheu ❤️ Made with love by Mansheu ❤️ Made with love by Mansheu ❤️</p></marquee>
+    <div class="scroll-text">
+      Made with love by Mansheu ❤️ &nbsp; Made with love by Mansheu ❤️ &nbsp; Made with love by Mansheu ❤️ &nbsp; Made with love by Mansheu ❤️
+    </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const burger = document.querySelector('.hamburger');
+      const nav = document.querySelector('.nav');
+      const navLinks = document.querySelectorAll('.nav a');
+
+      const toggleNav = () => {
+        const isOpened = nav.classList.toggle('open');
+        burger.setAttribute('aria-expanded', String(isOpened));
+      };
+
+      // Toggle nav when hamburger is clicked
+      burger.addEventListener('click', toggleNav);
+
+      // Close nav when a link inside is clicked
+      navLinks.forEach(link => {
+        link.addEventListener('click', toggleNav);
+      });
+    });
+  </script>
+
 </body>
 </html>

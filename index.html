@@ -70,7 +70,7 @@
     /* MENU CARDS */
     .menu-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(3, 1fr); /* Always 3 columns on larger screens */
       gap: 1rem;
       width: 100%;
     }
@@ -229,8 +229,6 @@
       body { font-size: 0.95rem; }
       .header h1 { font-size: 1.2rem; }
       .menu-card img { height: 150px; }
-      .menu-container {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       }
     }
   </style>

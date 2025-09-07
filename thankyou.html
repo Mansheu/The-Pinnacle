@@ -114,7 +114,7 @@
 </head>
 <body>
   <h1>Thanks for your order!</h1>
-  <p>Your order number is <strong>#1818</strong></p>
+  <p>Your order number is <strong id="order-number">#1818</strong></p>
 
   <div class="pot">
     <div class="lid"></div>
@@ -126,5 +126,14 @@
   </div>
 
   <a href="index.html" class="btn">Place a New Order</a>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Generate a random 4-digit number (from 1 to 1000)
+      const randomNumber = Math.floor(Math.random() * 1000) + 1;
+      const orderNumberElement = document.getElementById('order-number');
+      orderNumberElement.textContent = `#${randomNumber}`;
+    });
+  </script>
 </body>
 </html>

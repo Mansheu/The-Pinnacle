@@ -1,6 +1,3 @@
-<!-- The Pinnacle -->
-<!-- Mansheu -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,49 +15,48 @@
       margin: 0;
       padding: 0;
     }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px; /* Offset for sticky header */
+    }
     img { max-width: 100%; height: auto; }
 
     /* HEADER */
-    header {
+    .header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 1rem 2rem;
+      align-items: center;
+      padding: 1rem;
       background: #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      border-radius: 0 0 12px 12px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      width: 100%;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      position: sticky; top: 0; z-index: 1000;
     }
+    /* Hamburger Lines */
     #header-img {
       height: 60px;
       width: 60px;
     }
-    header h1 {
+    .header h1 {
       font-size: 1.8rem;
       font-weight: 700;
       margin: 0;
       color: #333;
-      flex: 1 1 auto;
-      text-align: center;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
     }
-    nav ul {
+    /* Navigation */
+    .nav {
       display: flex;
-      gap: 1.5rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      flex-wrap: wrap;
+      gap: 1rem;
     }
-    nav ul li a {
+    .nav a {
       text-decoration: none;
       color: #333;
       font-weight: 600;
       transition: color 0.3s;
     }
-    nav ul li a:hover { color: #c0392b; }
+    .nav a:hover { color: #e4002b; }
 
     /* MAIN LAYOUT */
     main, footer {
@@ -169,106 +165,69 @@
       100% { transform: translateX(-100%); }
     }
 
-    /* --- RESPONSIVE TWEAKS --- */
-    @media (min-width: 1024px) {
-      .menu-container {
-        grid-template-columns: repeat(3, 1fr) !important;
-      }
-    }
-    @media (max-width: 992px) {
-      .menu-container {
-        grid-template-columns: 1fr !important;
-        }
-    }
+    /* --- RESPONSIVE STYLES --- */
 
-    /* NAV CORE */
-    nav {
-      position: relative;
-    }
-
-    /* Hamburger base (hidden on desktop) */
+    /* Hamburger Menu */
     .hamburger {
       display: none;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: space-around;
       width: 28px;
       height: 20px;
       background: transparent;
       border: none;
       cursor: pointer;
       padding: 0;
+      z-index: 10; /* Ensure it's above other nav items */
     }
     .hamburger span {
       display: block;
       height: 3px;
       background: #e4002b;
       border-radius: 3px;
-      transition: transform 0.3s, opacity 0.3s;
+      transition: all 0.3s ease-in-out;
     }
 
-    /* Default UL stays horizontal on desktop */
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* rotate into X when open */
-    .hamburger.open span:nth-child(1) {
-      transform: translateY(8px) rotate(45deg);
-    }
-    .hamburger.open span:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.open span:nth-child(3) {
-      transform: translateY(-8px) rotate(-45deg);
-    }
-
-
-    /* --- MOBILE TREATMENT --- */
+    /* Tablet and Mobile Styles */
     @media (max-width: 768px) {
-      /* show hamburger */
+      /* Show hamburger and hide desktop nav links */
       .hamburger { display: flex; }
-
-      /* hide links until opened */
-      .nav-links {
+      .nav {
         display: none;
-        position: absolute;
-        top: 100%;
-        right: 0;
         flex-direction: column;
+        gap: 0.5rem;
         background: #fff;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        border-radius: 8px;
-        padding: 0.5rem 1rem;
-        z-index: 999;
+        position: absolute;
+        top: 100%; /* Position below the header */
+        right: 1rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        padding: 1rem;
+        border-radius: 6px;
+      }
+      .nav.open { display: flex; }
+
+      /* Hamburger "X" animation */
+      .hamburger[aria-expanded="true"] span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger[aria-expanded="true"] span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
       }
 
-      .nav-links.show { display: flex; }
-
-      .nav-links li { margin: 0.5rem 0; }
-      .nav-links a { color: #333; font-weight: 600; }
-    }
-
-
-    @media (max-width: 768px) {
+      /* General layout adjustments */
+      #header-img { height: 48px; width: 48px; }
+      .header h1 { font-size: 1.4rem; }
       .menu-container {
-        grid-template-columns: 1fr !important;
-      }
-      #header-img { height: 48px; }
-      header h1 { font-size: 1.4rem; }
-      nav ul { flex-direction: column; gap: 0.5rem; }
-      .menu-container {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 1fr;
       }
     }
+    /* Mobile-only Styles */
     @media (max-width: 480px) {
       body { font-size: 0.95rem; }
-      header h1 { font-size: 1.2rem; }
-      nav ul li a { font-size: 0.95rem; }
+      .header h1 { font-size: 1.2rem; }
       .menu-card img { height: 150px; }
       .menu-container {
         grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -276,8 +235,10 @@
     }
   </style>
 </head>
+
 <body>
-  <header>
+  <header class="header">
+    <!-- SVG Logo on the left -->
     <svg id="header-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="60" height="60">
       <!-- Bowl -->
       <path d="M8 40c2 10 12 16 24 16s22-6 24-16H8z" fill="#e4002b"/>
@@ -286,24 +247,23 @@
       <path d="M32 8c0 4 4 6 4 10"  stroke="#e4002b" stroke-width="3" fill="none" stroke-linecap="round"/>
       <path d="M44 12c0 4 4 6 4 10" stroke="#e4002b" stroke-width="3" fill="none" stroke-linecap="round"/>
     </svg>
-
     <h1>The Pinnacle</h1>
-    <nav>
-    <!-- Hamburger button -->
-    <button class="hamburger" aria-label="Toggle navigation">
+
+    <!-- Hamburger Button -->
+    <button class="hamburger" aria-label="Menu" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
     </button>
 
-    <!-- Menu links -->
-    <ul class="nav-links">
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#order-menu">Order Menu</a></li>
-    </ul>
+    <!-- Navigation -->
+    <nav class="nav">
+      <!-- The `ul` and `li` were removed for simplicity, direct `a` tags work fine -->
+      <a href="#menu">Menu</a>
+      <a href="#order-menu">Order Menu</a>
     </nav>
-
   </header>
+
 
   <main>
     <section id="menu">
@@ -400,13 +360,23 @@
   </footer>
 
   <script>
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
+    document.addEventListener('DOMContentLoaded', () => {
+      const burger = document.querySelector('.hamburger');
+      const nav = document.querySelector('.nav');
+      const navLinks = document.querySelectorAll('.nav a');
 
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-      // animate bars into "X"
-      hamburger.classList.toggle('open');
+      const toggleNav = () => {
+        const isOpened = nav.classList.toggle('open');
+        burger.setAttribute('aria-expanded', String(isOpened));
+      };
+
+      // Toggle nav when hamburger is clicked
+      burger.addEventListener('click', toggleNav);
+
+      // Close nav when a link inside is clicked
+      navLinks.forEach(link => {
+        link.addEventListener('click', toggleNav);
+      });
     });
   </script>
 
